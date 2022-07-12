@@ -1,3 +1,3 @@
 @Library('dcbe') _
 
-dockerimagebuild("aptly:latest", "")
+dockerimagebuild("reprepro:latest", "")

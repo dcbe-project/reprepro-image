@@ -11,7 +11,8 @@ ENV LC_ALL en_US.UTF-8
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends \
         gnupg2 \
-        aptly \
+        reprepro \
+        inoticoming \
         locales && \
     apt-get clean -y && \
     rm -rf /var/lib/apt/lists/*
@@ -19,3 +20,8 @@ RUN apt-get update -y && \
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && locale-gen
 
 RUN echo "root:root" | chpasswd
+
+COPY start.sh /start.sh
+RUN chmod 755 /start.sh
+
+ENTRYPOINT /start.sh
