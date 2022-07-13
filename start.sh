@@ -2,9 +2,10 @@
 
 set -e
 
-gpg --import /keys/priv.key
-gpg --import /keys/pub.key
+gpg --import /keys/repo-priv
+gpg --import /keys/repo-pub
 
-mkdir -p /share-rw/incoming
+mkdir -p /repo/incoming
+chmod 777 /repo/incoming
 
-inoticoming --foreground /share-rw/incoming --suffix .changes reprepro -s --basedir /repo processincoming dcbe {} \;
+inoticoming --foreground /repo/incoming --suffix .changes reprepro -s --basedir /repo processincoming dcbe {} \;
